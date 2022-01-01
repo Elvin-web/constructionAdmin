@@ -21,10 +21,10 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-//    @GetMapping(value = "/")
-//    public String loginRedirect() {
-//        return "redirect:/login";
-//    }
+    @GetMapping(value = "/")
+    public String loginRedirect() {
+        return "redirect:/login";
+    }
 
     @GetMapping(value = "/login")
     public String login() {
