@@ -13,7 +13,7 @@ public class Method {
     private static final String UPLOAD_DIRECTORY = "upload";
   //  private static final String url = "C:\\Users\\DELL\\Desktop\\freeLance";
 
-    private static final String url = "/home/media/pictures/";
+    private static final String url = "/home/k-ugur/media/";
 
 
     public static String fileWrite(MultipartFile image) throws IOException {

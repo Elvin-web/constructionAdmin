@@ -86,7 +86,7 @@
                 </h4>
                 <i class="m-menu__section-icon flaticon-more-v3"></i>
             </li>
-            <li sec:authorize="hasRole('ROLE_SUPER_ADMIN')" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"
+            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"
                 data-menu-submenu-toggle="hover">
                 <a th:href="@{/user}" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon la la-users"></i>
@@ -97,7 +97,7 @@
                 </a>
 
             </li>
-            <li sec:authorize="hasRole('ROLE_SUPER_ADMIN')" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" data-menu-submenu-toggle="hover">
+            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" data-menu-submenu-toggle="hover">
                 <a th:href="@{/category}" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon la la-th-list"></i>
                     <span class="m-menu__link-text" style="color: white">
@@ -106,7 +106,7 @@
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
             </li>
-            <li sec:authorize="hasRole('ROLE_SUPER_ADMIN')" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" data-menu-submenu-toggle="hover">
+            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" data-menu-submenu-toggle="hover">
                 <a th:href="@{/product}" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon la la-th-list"></i>
                     <span class="m-menu__link-text" style="color: white">
@@ -115,7 +115,7 @@
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
             </li>
-            <li sec:authorize="hasRole('ROLE_SUPER_ADMIN')" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" data-menu-submenu-toggle="hover">
+            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" data-menu-submenu-toggle="hover">
                 <a th:href="@{/brend}" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon la la-th-list"></i>
                     <span class="m-menu__link-text" style="color: white">
@@ -124,7 +124,7 @@
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
             </li>
-            <li sec:authorize="hasRole('ROLE_SUPER_ADMIN')" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" data-menu-submenu-toggle="hover">
+            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" data-menu-submenu-toggle="hover">
                 <a th:href="@{/size}" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon la la-th-list"></i>
                     <span class="m-menu__link-text" style="color: white">
