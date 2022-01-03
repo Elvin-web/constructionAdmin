@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/login", "/logout","/resources/**", "/img/**").permitAll()
+                .antMatchers("/", "/login", "/logout","/resources/**", "/img/**","/images/**").permitAll()
                 .antMatchers("/profile").access("hasAnyRole('ROLE_SUPER_ADMIN','ROLE_ADMIN')")
                 .antMatchers("/user", "/users", "/academicDegree")
                 .access("hasRole('ROLE_SUPER_ADMIN')")
@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) {
         web.httpFirewall(allowUrlEncodedSlashHttpFirewall());
         web.ignoring()
-                .antMatchers("/resources/**", "/static/**", "/templates/**", "/css/**", "/js/**", "/img/**");
+                .antMatchers("/resources/**", "/static/**", "/templates/**", "/css/**", "/js/**", "/img/**","/images/**");
     }
 
     @Bean

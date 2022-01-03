@@ -10,22 +10,16 @@ import java.util.UUID;
 
 public class Method {
 
-    private static final String UPLOAD_DIRECTORY = "upload";
-  //  private static final String url = "C:\\Users\\DELL\\Desktop\\freeLance";
-
-    private static final String url = "/home/k-ugur/media/";
-
+    private static final String url = "/opt/tomcat/webapps/images/";
 
     public static String fileWrite(MultipartFile image) throws IOException {
 
-        String uploadPath = url + File.separator + UPLOAD_DIRECTORY;
-
-        String newFileImage =  image.getOriginalFilename()
+        String newFileImage = image.getOriginalFilename()
                 .replace(image.getOriginalFilename()
                         .substring(0, image.getOriginalFilename()
                                 .lastIndexOf(".")), UUID.randomUUID().toString());
 
-        Files.write(Paths.get(uploadPath + File.separator + newFileImage), image.getBytes());
+        Files.write(Paths.get(url + newFileImage), image.getBytes());
 
         return newFileImage;
 
