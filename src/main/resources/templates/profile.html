@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:include="header.html" th:remove="tag"></div>
+<style>
+    .btn {
+        background-color: #0fa3b9 !important;
+        border: 1px #0fa3b9 !important;
+    }
+</style>
+
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+<!-- begin:: Page -->
+<div class="m-grid m-grid--hor m-grid--root m-page">
+
+    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+        <div th:include="menu.html" th:remove="tag"></div>
+
+        <div id="adminProfile" class="m-grid__item m-grid__item--fluid m-wrapper">
+            <div class="m-content">
+                <div class="m-portlet__body">
+
+                    <form th:action="@{/profile}" th:object="${user}" id="profile">
+                        <div class="m-content">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-4">
+                                    <div class="m-portlet m-portlet--full-height  ">
+                                        <div class="m-portlet__body">
+                                            <div class="m-card-profile">
+                                                <div class="m-card-profile__title m--hide">
+                                                    Your Profile
+                                                </div>
+                                                <div class="m-card-profile__pic">
+                                                    <div class="m-card-profile__pic-wrapper">
+                                                        <!--                                            <img src="http://ambulance-admin-dev.ezgil.az/admin/img/user.png"/>-->
+                                                        <img src="./img/user.png"/>
+
+                                                    </div>
+                                                </div>
+                                                <div class="m-card-profile__details">
+                                                    <label class="m-card-profile__name"
+                                                           th:text="${user.surname + ' ' + user.name}">
+                                                    </label>
+                                                    <a href="" class="m-card-profile__email m-link">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <ul class="m-nav m-nav--hover-bg m-portlet-fit--sides">
+                                                <li class="m-nav__separator m-nav__separator--fit"></li>
+                                                <li class="m-nav__section m--hide">
+												<span class="m-nav__section-text">
+													Section
+												</span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-9 col-lg-8">
+                                    <div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
+
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="m_user_profile_tab_1">
+                                                <form class="m-form m-form--fit m-form--label-align-right">
+                                                    <div class="m-portlet__body">
+                                                        <div class="form-group m-form__group row"
+                                                             style="margin-bottom: 40px;">
+                                                            <div class="col-10 ml-auto">
+                                                                <h3 class="m-form__section">
+                                                                    Personal Details
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <input type="hidden" th:field="${user.id}"/>
+
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-3 col-form-label">
+                                                                Name
+                                                            </label>
+                                                            <div class="col-7">
+                                                                <input class="form-control m-input" id="name"
+                                                                       type="text" th:field="${user.name}"
+                                                                       readonly style="text-align: center;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-3 col-form-label">
+                                                                Surname
+                                                            </label>
+                                                            <div class="col-7">
+                                                                <input class="form-control m-input" id="surname"
+                                                                       type="text" th:field="${user.surname}"
+                                                                       readonly style="text-align: center;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-3 col-form-label">
+                                                                Phone No.
+                                                            </label>
+                                                            <div class="col-7">
+                                                                <input class="form-control m-input" id="phoneNumber"
+                                                                       type="text" th:field="${user.mobile}"
+                                                                       readonly style="text-align: center;">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-3 col-form-label">
+                                                                Email
+                                                            </label>
+                                                            <div class="col-7">
+                                                                <input class="form-control m-input" id="email"
+                                                                       type="text" th:field="${user.username}"
+                                                                       readonly style="text-align: center;">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                                                    </div>
+                                                    <div class="m-portlet__foot m-portlet__foot--fit">
+                                                        <div class="m-form__actions">
+                                                            <div class="row">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane active" id="m_user_profile_tab_2"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="m-scroll-top m-scroll-top--skin-top" data-toggle="m-scroll-top" data-scroll-offset="500"
+     data-scroll-speed="300">
+    <i class="la la-arrow-up"></i>
+</div>
+<div th:include="footer" th:align="left" th:remove="tag"></div>
+<script>
+    function preventBack() {
+        window.history.forward();
+    }
+
+    setTimeout("preventBack()", 0);
+    window.onunload = function () {
+        null
+    };
+</script>
+</body>
+</html>

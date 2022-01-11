@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:include="header.html" th:remove="tag"></div>
+<style>
+    .btn.btn-danger {
+        background-color: #0fa3b9 !important;
+        border: 1px #0fa3b9 !important;
+    }
+
+    .form-control-label {
+        color: #242532 !important;
+
+    }
+
+    .form-control {
+        border-color: #154360;
+    }
+</style>
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+
+<div class="m-grid m-grid--hor m-grid--root m-page">
+
+    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+
+        <div th:include="menu.html" th:remove="tag"></div>
+
+        <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+            <!------------- title ------------>
+
+            <div class="m-content">
+                <div class="m-portlet__body">
+                    <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+                        <div class="row align-items-center">
+                            <div class="col-xl-8 order-2 order-xl-1">
+                                <div class="mr-auto">
+                                    <h3 class="m-subheader__title m-subheader__title--separator">
+                                        Admin & Operators
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                                <a style="color: white;" class="btn btn-danger" id="addUserBtn">
+												<span>
+													<i class="la la-plus"></i>
+													<span>
+														Add User
+													</span>
+												</span>
+                                </a>
+                                <div class="m-separator m-separator--dashed d-xl-none"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="m_datatable" id="user_data">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Add User
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">
+												×
+											</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="m-form m-form--fit m-form--label-align-right" id="userAddForm"
+                              autocomplete="off">
+                            <div class="row">
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Name
+                                    </label>
+                                    <input type="text" class="form-control" id="name" name="name">
+                                </div>
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Surname
+                                    </label>
+                                    <input type="text" class="form-control" id="surname" name="surname">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Username
+                                    </label>
+                                    <input type="text" class="form-control" id="username" name="username"
+                                           autocomplete="off">
+                                </div>
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Mobile
+                                    </label>
+                                    <input type="text" class="form-control phone" id="mobile" name="mobile"
+                                           placeholder="+994_________">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Role
+                                    </label>
+                                    <select class="form-control" id="roleDropDown" name="roleId" required>
+                                    </select>
+                                </div>
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Password
+                                    </label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                           autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Confirm Password
+                                    </label>
+                                    <input type="password" class="form-control" id="confirmPassword">
+                                </div>
+
+                            </div>
+<!--                            <div class="row">-->
+<!--                                <div class="form-group col-xl-6" style="display: none;" id="imageDiv">-->
+<!--                                    <label class="form-control-label">-->
+<!--                                        Profile Image-->
+<!--                                    </label>-->
+<!--                                    <input type="file" class="form-control" id="image" name="image">-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Save
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Edit User
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">
+												×
+											</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="userId" name="id" value=""/>
+                        <form class="m-form m-form--fit m-form--label-align-right" id="userEditForm"
+                              autocomplete="off">
+                            <div class="row">
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Name
+                                    </label>
+                                    <input type="text" class="form-control" id="editName" name="name">
+                                </div>
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Surname
+                                    </label>
+                                    <input type="text" class="form-control" id="editSurname" name="surname">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Username
+                                    </label>
+                                    <input type="text" class="form-control" id="editUsername" name="username">
+                                </div>
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Mobile
+                                    </label>
+                                    <input type="text" class="form-control phone" id="editMobile" name="mobile"
+                                           placeholder="+994_________">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Role
+                                    </label>
+                                    <select class="form-control" id="editRoleDropDown" name="roleId" required>
+                                    </select>
+                                </div>
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Password
+                                    </label>
+                                    <input type="password" class="form-control" id="editPassword" name="password"
+                                           autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xl-6">
+                                    <label class="form-control-label">
+                                        Confirm Password
+                                    </label>
+                                    <input type="password" class="form-control" id="editConfirmPassword">
+                                </div>
+                            </div>
+<!--                            <div class="row">-->
+<!--                                <div class="form-group col-xl-6" style="display: none;" id="editImageDiv">-->
+<!--                                    <label class="form-control-label">-->
+<!--                                        Profile Image-->
+<!--                                    </label>-->
+<!--                                    <input type="file" class="form-control" id="editImage" name="image">-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Save
+                                </button>
+                            </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!--<div th:include="footer" th:align="right"></div>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+<script type="text/javascript" th:src="@{/js/users.js}"></script>
+<script>
+    $.mask.definitions['#'] = $.mask.definitions['9'];  //Set # to do what 9 does
+    $.mask.definitions['+'] = null;
+    $.mask.definitions['9'] = null;
+    $.mask.definitions['9'] = null;
+    $.mask.definitions['4'] = null;
+    $('.phone').mask('+994#########');
+
+    $('#addUserBtn').click(function () {
+        $('#addUser').modal();
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:include="header.html"></div>
+
+<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+<!-- begin:: Page -->
+<div class="m-grid m-grid--hor m-grid--root m-page">
+    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--singin m-login--2 m-login-2--skin-2" id="m_login">
+        <div class="m-grid__item m-grid__item--fluid	m-login__wrapper">
+            <div class="m-login__container">
+<!--                <div class="m-login__logo">-->
+<!--                    <img src="http://ambulance-admin-dev.ezgil.az/admin/img/ambulance.svg" width="200" height="60">-->
+<!--                </div>-->
+                <div class="m-login__signin" style="margin-top: -40px;">
+                    <div class="m-login__head">
+                    </div>
+
+                    <form class="m-login__form m-form" th:action="@{/login}"  method="post">
+                        <div class="form-group m-form__group">
+                            <input class="form-control m-input" type="text" name="username" placeholder="İstifadəçinin adı" id="username" required/>
+                        </div>
+                        <div class="form-group m-form__group">
+                            <input class="form-control m-input m-login__form-input--last" name="password" type="password" placeholder="Parol"  id="password" required/>
+                        </div>
+                        <div th:if="${param.error} != null">
+                            <p style="color: red;margin-top: 10px;margin-left: 10px;">Invalid username or password!</p>
+                        </div>
+
+                        <div class="m-login__form-action">
+                            <p id="forgetPassword" style="color: white;margin-top: 30px;margin-left: 10px; cursor: pointer;" data-toggle="modal" data-target="#forgetPasswordModal">Şifrəmi unutmuşam</p>
+                            <button type="submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary btn-login">
+                                Daxil Ol
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="forgetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: 20%;">
+
+        <div class="modal-content" style="padding: 20px;">
+
+            <form id="forgetPasswordForm">
+                <label>Email</label>
+                <input class="form-control mb-3" id="email" name="email" placeholder="Email" required>
+
+                <div class="row mt-4">
+                    <div style="margin: auto;">
+                        <input style="color: white;" type="submit" id="forgetBtn" class="btn btn-danger form-control" value="Send">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="modal-close" data-dismiss="modal" style="cursor: pointer;position: absolute;right:30px;top: 30px;width: 40px; height:40px; background: #fff;padding: 10px;text-align: center; border-radius: 50px;"><i class="fa fa-times" style="font-size: 20px;"></i></div>
+
+</div>
+
+</body>
+</html>
